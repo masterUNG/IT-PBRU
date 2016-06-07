@@ -1,9 +1,13 @@
 package appewtc.masterung.itpbru;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
 /**
  * Created by masterUNG on 6/7/16 AD.
  */
-public class MyOpenHelper {
+public class MyOpenHelper extends SQLiteOpenHelper{
 
     //Explicit
     public static final String database_name = "pbru.db";
@@ -17,7 +21,17 @@ public class MyOpenHelper {
             "Password text);";
 
 
-    public MyOpenHelper() {
+    public MyOpenHelper(Context context) {
+        super(context, database_name, null, database_version);
     }   // Constructor
 
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+            sqLiteDatabase.execSQL(create_user_table);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
 }   // Main Class
