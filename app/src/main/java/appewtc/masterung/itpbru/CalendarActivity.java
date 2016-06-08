@@ -52,6 +52,9 @@ public class CalendarActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 Intent intent = new Intent(CalendarActivity.this, UploadAccount.class);
+                intent.putExtra("Login", getIntent().getStringArrayExtra("Login"));
+                intent.putExtra("InOut", 0);
+                startActivity(intent);
 
                 dialogInterface.dismiss();
             }
@@ -59,6 +62,12 @@ public class CalendarActivity extends AppCompatActivity {
         builder.setNeutralButton("รายจ่าย", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
+                Intent intent = new Intent(CalendarActivity.this, UploadAccount.class);
+                intent.putExtra("Login", getIntent().getStringArrayExtra("Login"));
+                intent.putExtra("InOut", 1);
+                startActivity(intent);
+
                 dialogInterface.dismiss();
             }
         });
