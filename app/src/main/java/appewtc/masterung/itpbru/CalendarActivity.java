@@ -2,6 +2,7 @@ package appewtc.masterung.itpbru;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
@@ -49,6 +50,9 @@ public class CalendarActivity extends AppCompatActivity {
         builder.setPositiveButton("รายรับ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
+                Intent intent = new Intent(CalendarActivity.this, UploadAccount.class);
+
                 dialogInterface.dismiss();
             }
         });
