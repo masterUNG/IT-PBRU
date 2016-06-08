@@ -14,6 +14,9 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
 
     //Explicit
@@ -108,6 +111,29 @@ public class MainActivity extends AppCompatActivity {
 
                 progressDialog.dismiss();
                 Log.d("7June", "JSON ==> " + s);
+
+                JSONArray jsonArray = new JSONArray(s);
+
+                String[] idStrings = new String[jsonArray.length()];
+                String[] nameStrings = new String[jsonArray.length()];
+                String[] surnameStrings = new String[jsonArray.length()];
+                String[] userStrings = new String[jsonArray.length()];
+                String[] passwordStrings = new String[jsonArray.length()];
+
+                for (int i=0;i<jsonArray.length();i++) {
+
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                    idStrings[i] = jsonObject.getString("id");
+                    nameStrings[i] = jsonObject.getString(MyManage.column_name);
+                    surnameStrings[i] = jsonObject.getString(MyManage.column_surname);
+                    userStrings[i] = jsonObject.getString(MyManage.column_user);
+                    passwordStrings[i] = jsonObject.getString(MyManage.column_password);
+
+                    myManage.addNewUser(idStrings[i], nameStrings[i],
+                            surnameStrings[i], userStrings[i], passwordStrings[i]);
+
+                }   //for
 
             } catch (Exception e) {
                 e.printStackTrace();
