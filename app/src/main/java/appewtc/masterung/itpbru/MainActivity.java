@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         deleteAllSQLite();
 
         //Show Add First Data
-        AddFirst();
+        //AddFirst();
 
         mySynJSON();
 
