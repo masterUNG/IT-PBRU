@@ -34,9 +34,28 @@ public class MainActivity extends AppCompatActivity {
         //Delete All SQLite
         deleteAllSQLite();
 
+        //Show Add First Data
+        AddFirst();
+
         mySynJSON();
 
     }   // Main Method
+
+    private void AddFirst() {
+
+        MyData myData = new MyData();
+
+        String[] nameStrings = myData.getNameStrings();
+        String[] surnameStrings = myData.getSurnameStrings();
+        String[] userStrings = myData.getUserStrings();
+        String[] passowordStrings = myData.getPasswordStrings();
+
+        for (int i=0;i<nameStrings.length;i++) {
+            myManage.addNewUser(Integer.toString(i + 1), nameStrings[i], surnameStrings[i],
+                    userStrings[i], passowordStrings[i]);
+        }
+
+    }
 
     private void mySynJSON() {
         ConnectedUserTABLE connectedUserTABLE = new ConnectedUserTABLE(this);
