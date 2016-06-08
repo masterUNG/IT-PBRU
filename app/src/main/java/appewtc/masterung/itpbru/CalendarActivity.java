@@ -32,7 +32,7 @@ public class CalendarActivity extends AppCompatActivity {
 
     private void confirmDialog(int day, int month, int year) {
 
-        String strDate = Integer.toString(day) +
+        final String strDate = Integer.toString(day) +
                 "/" + Integer.toString(month + 1) +
                 "/" + Integer.toString(year);
 
@@ -54,6 +54,7 @@ public class CalendarActivity extends AppCompatActivity {
                 Intent intent = new Intent(CalendarActivity.this, UploadAccount.class);
                 intent.putExtra("Login", getIntent().getStringArrayExtra("Login"));
                 intent.putExtra("InOut", 0);
+                intent.putExtra("Date", strDate);
                 startActivity(intent);
 
                 dialogInterface.dismiss();
@@ -66,6 +67,7 @@ public class CalendarActivity extends AppCompatActivity {
                 Intent intent = new Intent(CalendarActivity.this, UploadAccount.class);
                 intent.putExtra("Login", getIntent().getStringArrayExtra("Login"));
                 intent.putExtra("InOut", 1);
+                intent.putExtra("Date", strDate);
                 startActivity(intent);
 
                 dialogInterface.dismiss();
